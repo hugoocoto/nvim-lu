@@ -2,8 +2,8 @@ if exists("b:current_syntax")
   finish
 endif
 
-syntax keyword miLangKeyword extern intern mut Type Tagged yield match Again Done
-syntax keyword miLangBuiltin import download exists abort print
+syntax keyword miLangKeyword extern intern mut type tagged yield match again done
+syntax keyword miLangBuiltin import download exists abort
 syntax keyword miLangBoolean true false
 syntax keyword miLangSpecial ok err self
 syntax keyword miLangType int float

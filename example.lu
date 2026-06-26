@@ -1,0 +1,41 @@
+extern printf: int => int;
+intern print_num: int => int;
+
+```llvm
+@.str = private unnamed_addr constant [4 x i8] c"%d\0A\00", align 1
+
+define i32 @print_num(i32 %0) {
+  %2 = alloca i32, align 4
+  store i32 %0, ptr %2, align 4
+  %3 = load i32, ptr %2, align 4
+  %4 = call i32 (ptr, ...) @printf(ptr @.str, i32 %3)
+  %5 = load i32, ptr %2, align 4
+  ret i32 %5
+}```;
+
+0 -> (i: int) => { i -> print_num };
+
+(a := (4 + 2) * (1 + 5)) 
+-> (i: int) => { 
+    i -> print_num;
+    i -> print_num;
+    i -> print_num 
+};
+
+1 -> (i: int) => { 
+    i 
+    -> (j: int) => { 
+        j 
+        -> print_num 
+    } 
+    -> print_num
+};
+
+// functions
+foo := (i: int) => { i -> print_num };
+
+31 -> foo;
+
+
+// return value
+0 
